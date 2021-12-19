@@ -1,30 +1,24 @@
-import Head from 'next/head';
+import { useState } from 'react';
 
-import styles from '../styles/Home.module.css';
+import data from '../data.json';
+import { Service } from '../components/Service';
 
 const Home = () => {
-  const onClick = () => {
-    fetch('/api/sly')
-      .then((response) => response.json())
-      .then((data) => console.log(data));
-  };
-
-  const onChange = () => {
-    fetch('/api/sly', { method: 'POST' })
-      .then((response) => response.json())
-      .then((data) => console.log(data));
-  };
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Sly</title>
-      </Head>
-
-      <button onClick={onClick}>Request 📍</button>
-
-      <input type="file" onChange={onChange} />
-    </div>
+    <section className="grid sm:p-5 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 gap-2 mt-10 w-full max-h-full">
+      {data.map(({ name, appointment }, index) => (
+        <Service key={index} name={name} appointment={appointment} />
+      ))}
+    </section>
   );
+};
+
+export const getServerSideProps = () => {
+  return {
+    props: {
+      data,
+    },
+  };
 };
 
 export default Home;
