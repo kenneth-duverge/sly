@@ -1,6 +1,7 @@
 import 'tailwindcss/tailwind.css';
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
+import Link from 'next/link';
 
 const onClick = () => {
   fetch('/api/sly')
@@ -30,11 +31,15 @@ const BellButton = ({ onClick }: { onClick: VoidFunction }) => (
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <nav className="h-14 w-full flex items-center justify-between p-4 container mx-auto">
-        <h1 className="text-2xl text-gray-900">NJDMV Next Site</h1>
+      <nav className="h-14 w-full flex items-center justify-between py-4 container mx-auto">
+        <Link href="/">
+          <a>
+            <h1 className="text-2xl text-gray-900">NJDMV Next Site</h1>
+          </a>
+        </Link>
         <BellButton onClick={onClick} />
       </nav>
-      <main className="container mx-auto w-full h-full">
+      <main className="container mx-auto w-full h-full mt-20">
         <Component {...pageProps} />
       </main>
     </>

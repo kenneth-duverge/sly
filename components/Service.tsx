@@ -11,7 +11,7 @@ export const Service = ({ name, appointment }: Props) => {
       <figcaption className="font-light text-sm">
         <span className={`font-bold ${appointment > 0 ? 'text-green-600' : 'text-red-700'}`}>
           {' '}
-          {appointment}
+          {appointment.toLocaleString('en-us')}
         </span>{' '}
         appointments avaliable
       </figcaption>

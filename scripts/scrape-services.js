@@ -14,7 +14,7 @@ async function scrape() {
 
   const services = [];
 
-  items.each((_, item) => {
+  items.each((index, item) => {
     // Grab the container with the service name and appointment
     const cardButton = $(item).children('.cardButton');
     // Grab the service name
@@ -24,10 +24,12 @@ async function scrape() {
       cardButton.find('a.text-white:not(.text-uppercase)').text().trim().split(' ')[0]
     );
 
-    services.push({ name, appointment });
+    const id = parseInt(cardButton.find('a.text-white').attr('href').split('/').pop());
+
+    services.push({ name, appointment, id });
   });
 
-  fs.writeFile('data.json', JSON.stringify(services, null, 2), (err) => {
+  fs.writeFile('./public/data.json', JSON.stringify(services, null, 2), (err) => {
     if (err) console.log(err);
 
     console.log('Services written to data.json');
