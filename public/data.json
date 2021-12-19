@@ -1,0 +1,58 @@
+[
+  {
+    "name": "INITIAL PERMIT (BEFORE KNOWLEDGE TEST)",
+    "appointment": 3087
+  },
+  {
+    "name": "NON-DRIVER ID",
+    "appointment": 13140
+  },
+  {
+    "name": "KNOWLEDGE TEST (NOT CDL)",
+    "appointment": 6640
+  },
+  {
+    "name": "CDL KNOWLEDGE TEST",
+    "appointment": 12512
+  },
+  {
+    "name": "RENEWAL: LICENSE OR NON-DRIVER ID (REAL ID AVAILABLE)",
+    "appointment": 64269
+  },
+  {
+    "name": "REAL ID - (NON-RENEWAL)",
+    "appointment": 395
+  },
+  {
+    "name": "CDL PERMIT OR ENDORSEMENT - (NOT FOR KNOWLEDGE TEST)",
+    "appointment": 5926
+  },
+  {
+    "name": "RENEWAL: CDL",
+    "appointment": 2917
+  },
+  {
+    "name": "TRANSFER FROM OUT OF STATE",
+    "appointment": 5789
+  },
+  {
+    "name": "NEW TITLE OR REGISTRATION",
+    "appointment": 80973
+  },
+  {
+    "name": "REGISTRATION RENEWAL",
+    "appointment": 28646
+  },
+  {
+    "name": "REPLACEMENT TITLE/ REGISTRATION",
+    "appointment": 6437
+  },
+  {
+    "name": "Non-CDL Knowledge Test - Rowan College",
+    "appointment": 0
+  },
+  {
+    "name": "Non-CDL Knowledge Test - Wanaque",
+    "appointment": 0
+  }
+]
