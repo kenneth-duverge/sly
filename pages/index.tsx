@@ -27,6 +27,7 @@ const Home = ({ data }: Props) => {
 };
 
 export const getServerSideProps = async () => {
+  console.log({ env: process.env });
   const response = await fetch(`${process.env.API_URL}/api/services`);
 
   const { data } = await response.json();
