@@ -1,4 +1,4 @@
-import { Service as DMVService } from '../_utils';
+import { Service as DMVService } from '../../utils';
 
 interface Props {
   service: DMVService;

@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import { getServiceById, Service } from '../../_utils';
+import { getServiceById, Service } from '../../../utils';
 
 export default async function handler(
   req: NextApiRequest,
