@@ -32,8 +32,11 @@ interface Params {
 }
 
 export const getServerSideProps = async ({ params }: { params: Params }) => {
-  const response = await fetch(`${process.env.API_URL}/api/services/${params.id}`);
-  const { data: service } = await response.json();
+  const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+  const data: DMVService[] = await fetch(`${protocol}://${process.env.VERCEL_URL}/data.json`).then(
+    (res) => res.json()
+  );
+  const service = data.find((s) => s.id === params.id)!;
 
   return { props: { service } };
 };

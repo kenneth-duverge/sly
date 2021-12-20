@@ -27,15 +27,12 @@ const Home = ({ data }: Props) => {
 };
 
 export const getServerSideProps = async () => {
-  console.log({ env: process.env });
-  const response = await fetch(`${process.env.API_URL}/api/services`);
-
-  const { data } = await response.json();
-
+  const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+  const data: DMVService[] = await fetch(`${protocol}://${process.env.VERCEL_URL}/data.json`).then(
+    (res) => res.json()
+  );
   return {
-    props: {
-      data,
-    },
+    props: { data },
   };
 };
 
