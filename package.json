@@ -1,5 +1,11 @@
 {
   "name": "sly",
+  "version": "0.1.0",
+  "description": "NJDMV Site to book appointments",
+  "author": {
+    "name": "Kenneth Duverge",
+    "email": "kenneth.duverge@icloud.com"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev",

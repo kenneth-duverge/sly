@@ -1,8 +1,4 @@
-interface DMVService {
-  id: string;
-  name: string;
-  appointment: number;
-}
+import { Service as DMVService } from '../_utils';
 
 interface Props {
   service: DMVService;
@@ -33,10 +29,9 @@ interface Params {
 
 export const getServerSideProps = async ({ params }: { params: Params }) => {
   const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
-  const data: DMVService[] = await fetch(`${protocol}://${process.env.VERCEL_URL}/data.json`).then(
-    (res) => res.json()
-  );
-  const service = data.find((s) => s.id === params.id)!;
+  const { data: service }: { data: DMVService } = await fetch(
+    `${protocol}://${process.env.VERCEL_URL}/api/services/${params.id}`
+  ).then((res) => res.json());
 
   return { props: { service } };
 };

@@ -1,26 +1,14 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import path from 'path';
-import { readFileSync } from 'fs';
+import { getServiceById, Service } from '../../_utils';
 
-interface Service {
-  id: string;
-  name: string;
-  appointment: number;
-}
-
-interface Data {
-  data: Service;
-}
-const prodPath = path.join(__dirname, 'data.json');
-const devPath = path.join(__dirname, 'public', 'data.json');
-const filePath = process.env.NODE_ENV === 'production' ? prodPath : devPath;
-const data = readFileSync(filePath, 'utf-8');
-
-export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
-  const services: Service[] = JSON.parse(data);
-  const service = services.find((s) => s.id === req.query.id)!;
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<{ data: Service }>
+) {
+  const serviceId = parseInt(req.query.id as string);
+  const service = await getServiceById(serviceId);
 
   return res.status(200).json({ data: service });
 }
