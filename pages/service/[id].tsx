@@ -32,7 +32,7 @@ interface Params {
 }
 
 export const getServerSideProps = async ({ params }: { params: Params }) => {
-  const response = await fetch(`${process.env.API_URL}/services/${params.id}`);
+  const response = await fetch(`${process.env.API_URL}/api/services/${params.id}`);
   const { data: service } = await response.json();
 
   return { props: { service } };
