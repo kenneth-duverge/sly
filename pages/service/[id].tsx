@@ -27,22 +27,12 @@ const Service = ({ service: { appointment, name } }: Props) => {
   );
 };
 
-export const getStaticPaths = async () => {
-  const response = await fetch(`${process.env.API_URL}/services`);
-  const { data } = await response.json();
-
-  return {
-    paths: data.map((service: DMVService) => ({ params: { id: service.id.toString() } })),
-    fallback: false,
-  };
-};
-
 interface Params {
   id: string;
 }
 
-export const getStaticProps = async ({ params }: { params: Params }) => {
-  const response = await fetch(`${process.env.API_URL}/services/${params.id}`);
+export const getServerSideProps = async ({ params }: { params: Params }) => {
+  const response = await fetch(`${process.env.API_URL}/api/services/${params.id}`);
   const { data: service } = await response.json();
 
   return { props: { service } };
