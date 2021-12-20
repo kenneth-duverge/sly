@@ -14,8 +14,8 @@ interface Props {
 
 const Home = ({ data }: Props) => {
   return (
-    <section className="grid sm:p-5 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 gap-2 mt-10 w-full max-h-full">
-      {data.map(({ appointment, id, name }, index) => (
+    <section className="grid px-8 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 gap-2 mt-10 w-full max-h-full">
+      {data.map(({ appointment, id, name }) => (
         <Link key={id} href={`/service/${id}`}>
           <a>
             <Service name={name} appointment={appointment} />
@@ -27,10 +27,11 @@ const Home = ({ data }: Props) => {
 };
 
 export const getServerSideProps = async () => {
+  /** Abstract this into its own function */
   const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
-  const data: DMVService[] = await fetch(`${protocol}://${process.env.VERCEL_URL}/data.json`).then(
-    (res) => res.json()
-  );
+  const { data }: { data: DMVService[] } = await fetch(
+    `${protocol}://${process.env.VERCEL_URL}/api/services`
+  ).then((res) => res.json());
   return {
     props: { data },
   };
