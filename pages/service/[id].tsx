@@ -28,6 +28,7 @@ const Service = ({ service: { appointment, name } }: Props) => {
 };
 
 export const getStaticPaths = async () => {
+  console.log(process.env);
   const response = await fetch(`${process.env.API_URL}/services`);
   const { data } = await response.json();
 
