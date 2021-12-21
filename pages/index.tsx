@@ -14,14 +14,16 @@ interface Props {
 
 const Home = ({ data }: Props) => {
   return (
-    <section className="grid px-8 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 gap-2 mt-10 w-full max-h-full">
-      {data.map(({ appointment, id, name }) => (
-        <Link key={id} href={`/service/${id}`}>
-          <a>
-            <Service name={name} appointment={appointment} />
-          </a>
-        </Link>
-      ))}
+    <section className="w-full max-h-full">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 gap-2 mt-10 px-8">
+        {data.map(({ appointment, id, name }) => (
+          <Link key={id} href={`/service/${id}`}>
+            <a>
+              <Service name={name} appointment={appointment} />
+            </a>
+          </Link>
+        ))}
+      </div>
     </section>
   );
 };
