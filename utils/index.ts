@@ -59,6 +59,9 @@ export async function getServices(): Promise<Service[]> {
 }
 
 export async function getServiceById(id: number) {
+  const { data } = await axios.get(`${url}/${id}`);
+  const $ = cheerio.load(data);
+
   const services = await getServices();
   const service = services.find((s) => s.id === id)!;
 
