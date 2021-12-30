@@ -20,20 +20,17 @@ interface Props {
 
 const Home = ({ data }: Props) => {
   return (
-    <>
-      <FeaturedArea />
-      <section className="w-full h-full flex flex-col gap-1">
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 gap-2 pt-8 px-8 h-full">
-          {data.map(({ appointment, id, name }) => (
-            <Link key={id} href={`/service/${id}`}>
-              <a>
-                <Service name={name} appointment={appointment} />
-              </a>
-            </Link>
-          ))}
-        </div>
-      </section>
-    </>
+    <section className="w-full h-full flex flex-col gap-1 container mx-auto">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 gap-2 pt-8 px-8 h-full">
+        {data.map(({ appointment, id, name }) => (
+          <Link key={id} href={`/service/${id}`}>
+            <a>
+              <Service name={name} appointment={appointment} />
+            </a>
+          </Link>
+        ))}
+      </div>
+    </section>
   );
 };
 
@@ -48,7 +45,8 @@ Home.getLayout = (page: ReactElement) => {
           </>
         </Navbar>
       </div>
-      <section className="w-full h-full">{page}</section>
+      <FeaturedArea />
+      {page}
       <Footer />
     </main>
   );
