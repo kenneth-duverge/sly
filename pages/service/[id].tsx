@@ -49,10 +49,8 @@ Service.getLayout = (page: ReactElement) => {
     <main className="h-full w-full relative">
       <div className="w-full absolute">
         <Navbar>
-          <>
-            <BackArrow />
-            <Notification />
-          </>
+          <BackArrow />
+          <Notification />
         </Navbar>
       </div>
       <section className="w-full min-h-full h-full container mx-auto pt-16">{page}</section>

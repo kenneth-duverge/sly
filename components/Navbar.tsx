@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactNode } from 'react';
 
 import Link from 'next/link';
 
@@ -29,7 +29,7 @@ export const BackArrow = () => (
   </Link>
 );
 
-const Navbar = ({ children }: { children: ReactElement }) => {
+const Navbar = ({ children }: { children: ReactNode }) => {
   return (
     <nav className="h-14 w-full flex items-center justify-between py-4 px-8 container mx-auto">
       {children}
