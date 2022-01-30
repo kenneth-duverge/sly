@@ -1,5 +1,7 @@
 import { ReactElement } from 'react';
 import Link from 'next/link';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../utils/db';
 
 import { Service } from '../components/Service';
 import FeaturedArea from '../components/FeaturedArea';
@@ -53,13 +55,10 @@ Home.getLayout = (page: ReactElement) => {
 };
 
 export const getServerSideProps = async () => {
-  /** Abstract this into its own function */
-  const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
-  const { data }: { data: DMVService[] } = await fetch(
-    `${protocol}://${process.env.VERCEL_URL}/api/services`
-  ).then((res) => res.json());
+  const querySnapshot = await getDocs(collection(db, 'appointments'));
+
   return {
-    props: { data },
+    props: { data: querySnapshot.docs.map((doc) => doc.data()) },
   };
 };
 

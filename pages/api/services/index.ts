@@ -5,5 +5,6 @@ import { getServices, Data } from '../../../utils';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
   const services = await getServices();
+
   return res.status(200).json({ data: services });
 }
